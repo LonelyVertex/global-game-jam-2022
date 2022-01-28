@@ -9,6 +9,6 @@ public class GroundCheckTester : MonoBehaviour
 
     void Update()
     {
-        model.UpdateGround(transform.position, playerType, true);                
+        model.UpdateGround(transform.position + Vector3.up * -0.342f, playerType, true);                
     }
 }

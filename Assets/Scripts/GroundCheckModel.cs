@@ -20,7 +20,10 @@ public class GroundCheckModel : MonoBehaviour
     [SerializeField] Vector2 cameraMin;
     [SerializeField] Vector2 cameraMax;
 
-    Texture2D groundCheckTexture;
+    public Texture2D groundCheckTexture { get; private set; }
+
+    int _movementMaskId = Shader.PropertyToID("_MovementMask");
+
     int textureWidth;
     int textureHeight;
 
@@ -63,13 +66,18 @@ public class GroundCheckModel : MonoBehaviour
         prevCoords = CalculateTextureCoordinates(startPosition.position);
     }
 
+    protected void Update()
+    {
+        Shader.SetGlobalTexture(_movementMaskId, groundCheckTexture);
+    }
+
     protected void OnGUI()
     {
         if (!drawTextureGUI) {
             return;
         }
 
-        GUI.DrawTexture(new Rect(10.0f, 10.0f, textureWidth, textureHeight), groundCheckTexture);
+        GUI.DrawTexture(new Rect(0.0f, 0.0f, Screen.width, Screen.height), groundCheckTexture);
     }
 
     private RectInt GetExtendedDimensions(RectInt rect)
