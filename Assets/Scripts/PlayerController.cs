@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         jump = false;
 
         movementController.onLandEvent += () => groundDrawer.ResetContinuous();
+        movementController.onJumpEvent += () => groundDrawer.DrawColorUnder();
     }
 
     void Update()

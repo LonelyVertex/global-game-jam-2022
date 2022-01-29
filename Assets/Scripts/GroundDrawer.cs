@@ -27,6 +27,12 @@ public class GroundDrawer : MonoBehaviour
         shouldBeContinuous = false;
     }
 
+    public void DrawColorUnder()
+    {
+        UpdateGround(drawerLeft.position, shouldBeContinuous);
+        UpdateGround(drawerRight.position, true);
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
