@@ -25,7 +25,9 @@ MonoBehaviour:
     sceneName: Scenes/Levels/Tutorial 2
   - sceneAsset: {fileID: 102900000, guid: ceb371c25035245c1bfc83a8487d7c6d, type: 3}
     sceneName: Scenes/Levels/Separation
-  - sceneAsset: {fileID: 102900000, guid: 02d2c9baadaf84329ab0976b2bc27caf, type: 3}
-    sceneName: Scenes/Levels/Pillars
   - sceneAsset: {fileID: 102900000, guid: 1c078f12ffeca4525ac1a81984137c01, type: 3}
     sceneName: Scenes/Levels/DoubleHelp
+  - sceneAsset: {fileID: 102900000, guid: 02d2c9baadaf84329ab0976b2bc27caf, type: 3}
+    sceneName: Scenes/Levels/Pillars
+  - sceneAsset: {fileID: 102900000, guid: c9433d6518bf34ab9a5823ca5ecf6bf0, type: 3}
+    sceneName: Scenes/Levels/Support

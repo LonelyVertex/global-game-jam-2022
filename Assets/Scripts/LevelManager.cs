@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,23 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
 
     [SerializeField] Levels levels;
-    
+
     int completePortals = 0;
+
+    KeyCode[] sequence =
+    {
+        KeyCode.I,
+        KeyCode.M,
+        KeyCode.A,
+        KeyCode.L,
+        KeyCode.O,
+        KeyCode.O,
+        KeyCode.S,
+        KeyCode.E,
+        KeyCode.R,
+    };
+
+    int sequenceIndex;
 
     string CurrentSceneName => SceneManager.GetActiveScene().name;
 
@@ -44,5 +60,20 @@ public class LevelManager : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene(CurrentSceneName);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(sequence[sequenceIndex]))
+        {
+            if (++sequenceIndex == sequence.Length)
+            {
+                LoadNextLevel();
+            }
+        }
+        else if (Input.anyKeyDown)
+        {
+            sequenceIndex = 0;
+        }
     }
 }

@@ -7,8 +7,6 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("The first level is: " + levels.GetFirstLevelSceneName());
-
         SceneManager.LoadScene(levels.GetFirstLevelSceneName());
     }
 }
