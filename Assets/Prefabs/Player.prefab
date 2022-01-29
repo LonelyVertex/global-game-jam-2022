@@ -368,7 +368,7 @@ MonoBehaviour:
   landSound: {fileID: 8300000, guid: 83c21a76b2c764308b87dc4bb4e8b4ef, type: 3}
   swapSound: {fileID: 8300000, guid: 903a72484e5bd4cdb88c1ea5dac9c8d2, type: 3}
   portalSound: {fileID: 8300000, guid: 4c7ccc4dc7d4742cda6bf905b9d35869, type: 3}
-  dieSound: {fileID: 8300000, guid: 8e731919cc0bc4924827302e90e9c087, type: 3}
+  dieSound: {fileID: 8300000, guid: eaf789502e81b4f308f96eef7ef1a7b5, type: 3}
 --- !u!1 &3567828986304528510
 GameObject:
   m_ObjectHideFlags: 0
