@@ -7,6 +7,7 @@ public class GroundMaskBlurPrepass : MonoBehaviour
 
     [Space]
     [SerializeField] Material material;
+    [SerializeField] Material tileMaterial;
 
     [Space]
     [SerializeField] int downsample;
@@ -36,8 +37,7 @@ public class GroundMaskBlurPrepass : MonoBehaviour
 
         Blur(texture, frameTexture);
 
-        Shader.SetGlobalTexture(blurTextureId, frameTexture);
-        Shader.SetGlobalTexture(maskTextureId, texture);
+        tileMaterial.SetTexture(blurTextureId, frameTexture);
     }
 
     private void HandleRenderPipelineManagerEndFrameRendering(ScriptableRenderContext ctx, Camera[] cameras)

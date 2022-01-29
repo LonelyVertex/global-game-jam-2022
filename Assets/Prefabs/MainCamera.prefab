@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckModel: {fileID: 3638612592889033163}
   material: {fileID: 2100000, guid: 7e1bfd069dde9374e8536a3cd2acb43e, type: 2}
+  tileMaterial: {fileID: 2100000, guid: a5625613b57dcb44182701138eaa5f28, type: 2}
   downsample: 2
 --- !u!81 &3638612592889033166
 AudioListener:
@@ -153,3 +154,5 @@ MonoBehaviour:
   extrudeWidth: {x: 1, y: 1}
   extrudeHeight: {x: 8, y: 2}
   drawTextureGUI: 0
+  cameraMin: {x: 0, y: 0}
+  cameraMax: {x: 0, y: 0}

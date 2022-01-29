@@ -24,8 +24,8 @@ public class GroundCheckModel : MonoBehaviour
     int textureWidth;
     int textureHeight;
 
-    Vector2 cameraMin;
-    Vector2 cameraMax;
+    [SerializeField] Vector2 cameraMin;
+    [SerializeField] Vector2 cameraMax;
 
     Vector2Int prevCoords;
     

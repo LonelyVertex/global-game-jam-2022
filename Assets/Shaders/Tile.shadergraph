@@ -22,9 +22,6 @@
             "m_Id": "8f4b8ab6d12248fc96dd281f6b24b83a"
         },
         {
-            "m_Id": "24cd30c9640e467f938a6e6879aa34aa"
-        },
-        {
             "m_Id": "b78627e7f0764ebaa8a3aadea8a23a11"
         }
     ],
@@ -524,8 +521,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 421.0001220703125,
-            "y": -62.000022888183597
+            "x": 374.0001525878906,
+            "y": -61.99997329711914
         },
         "m_Blocks": [
             {
@@ -541,8 +538,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 421.0001220703125,
-            "y": 138.00001525878907
+            "x": 374.0001525878906,
+            "y": 137.99998474121095
         },
         "m_Blocks": [
             {
@@ -609,10 +606,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2212.0,
-            "y": 962.9999389648438,
-            "width": 125.99999237060547,
-            "height": 77.0
+            "x": -2144.000244140625,
+            "y": 735.9999389648438,
+            "width": 117.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -683,17 +680,17 @@
     "m_Name": "BlurTexture",
     "m_DefaultReferenceName": "Texture2D_059890d5112e4dd9be672246bc41d2ba",
     "m_OverrideReferenceName": "_BlurTexture",
-    "m_GeneratePropertyBlock": false,
+    "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "hlslDeclarationOverride": 1,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"01affec000bc4e6409092a088d9dd1f5\",\"type\":3}}",
         "m_Guid": ""
     },
     "m_Modifiable": true,
-    "m_DefaultType": 0
+    "m_DefaultType": 1
 }
 
 {
@@ -1044,29 +1041,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "24cd30c9640e467f938a6e6879aa34aa",
-    "m_Guid": {
-        "m_GuidSerialized": "44f4e968-25bc-4b07-a44c-65e97e469ac1"
-    },
-    "m_Name": "TextureLerp",
-    "m_DefaultReferenceName": "Vector1_24cd30c9640e467f938a6e6879aa34aa",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DivideNode",
     "m_ObjectId": "257b7a0e47a84718b0bce45cf2b559ba",
@@ -1078,7 +1052,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1618.0001220703125,
+            "x": -1564.0,
             "y": 539.0,
             "width": 130.0,
             "height": 118.0
@@ -1656,10 +1630,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1790.0,
+            "x": -1736.0,
             "y": 550.0,
-            "width": 131.99998474121095,
-            "height": 94.0
+            "width": 132.0,
+            "height": 94.00000762939453
         }
     },
     "m_Slots": [
@@ -1892,10 +1866,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2274.0,
-            "y": 497.0,
-            "width": 208.0,
-            "height": 313.9999694824219
+            "x": -2144.0,
+            "y": 550.0,
+            "width": 144.99998474121095,
+            "height": 130.0
         }
     },
     "m_Slots": [
@@ -1973,8 +1947,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 110.0000228881836,
-            "y": 144.00001525878907,
+            "x": 62.99998092651367,
+            "y": 144.0,
             "width": 130.0,
             "height": 142.0
         }
@@ -2450,17 +2424,17 @@
     "m_Name": "MaskTexture",
     "m_DefaultReferenceName": "Texture2D_9e9dca3f46af42f098d075c52de64067",
     "m_OverrideReferenceName": "_MaskTexture",
-    "m_GeneratePropertyBlock": false,
+    "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"01affec000bc4e6409092a088d9dd1f5\",\"type\":3}}",
         "m_Guid": ""
     },
     "m_Modifiable": true,
-    "m_DefaultType": 0
+    "m_DefaultType": 1
 }
 
 {
@@ -2739,7 +2713,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1961.0,
+            "x": -1907.0,
             "y": 550.0,
             "width": 130.0,
             "height": 118.0
@@ -3228,8 +3202,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1155.0,
-            "y": 538.9999389648438,
+            "x": -1148.0,
+            "y": 533.0000610351563,
             "width": 109.0,
             "height": 34.0
         }
