@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] PlayerController other;
     [SerializeField] bool startActive;
+    [SerializeField] PlayerAnimator playerAnimator;
 
     GroundDrawer groundDrawer;
     MovementController movementController;
@@ -95,6 +96,8 @@ public class PlayerController : MonoBehaviour
         {
             groundDrawer.Draw(horizontalMove);
         }
+
+        playerAnimator.SetVelocity(horizontalMove);
 
         lastX = transform.position.x;
     }
