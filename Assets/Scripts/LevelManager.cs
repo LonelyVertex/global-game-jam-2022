@@ -5,8 +5,11 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    [SerializeField] string nextLevel;
+    [SerializeField] Levels levels;
+    
     int completePortals = 0;
+
+    string CurrentSceneName => SceneManager.GetActiveScene().name;
 
     void Awake()
     {
@@ -35,11 +38,11 @@ public class LevelManager : MonoBehaviour
 
     void LoadNextLevel()
     {
-        SceneManager.LoadScene(nextLevel);
+        SceneManager.LoadScene(levels.GetNextSceneName(CurrentSceneName));
     }
 
     void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(CurrentSceneName);
     }
 }
