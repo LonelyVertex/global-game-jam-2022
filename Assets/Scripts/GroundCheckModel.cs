@@ -13,19 +13,19 @@ public class GroundCheckModel : MonoBehaviour
     [SerializeField] int textureGranularity = 4;
 
     [Header("Texture Drawing Settings")]
-    [SerializeField] int extrudeSize = 1;
+    [SerializeField] Vector2Int extrudeWidth;
+    [SerializeField] Vector2Int extrudeHeight;
 
     [Header("Debug")]
     [SerializeField] bool drawTextureGUI;
-    [SerializeField] Vector2 cameraMin;
-    [SerializeField] Vector2 cameraMax;
-
+    
     public Texture2D groundCheckTexture { get; private set; }
-
-    int _movementMaskId = Shader.PropertyToID("_MovementMask");
 
     int textureWidth;
     int textureHeight;
+
+    Vector2 cameraMin;
+    Vector2 cameraMax;
 
     Vector2Int prevCoords;
     
@@ -55,20 +55,9 @@ public class GroundCheckModel : MonoBehaviour
 
     protected void Start()
     {
-        textureWidth = gridWidth * textureGranularity;
-        textureHeight = gridHeight * textureGranularity;
-
-        groundCheckTexture = new Texture2D(textureWidth, textureHeight);
-
-        cameraMin = mainCamera.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, mainCamera.nearClipPlane));
-        cameraMax = mainCamera.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, mainCamera.nearClipPlane));
+        CreateAndClearTexture();
 
         prevCoords = CalculateTextureCoordinates(startPosition.position);
-    }
-
-    protected void Update()
-    {
-        Shader.SetGlobalTexture(_movementMaskId, groundCheckTexture);
     }
 
     protected void OnGUI()
@@ -77,15 +66,15 @@ public class GroundCheckModel : MonoBehaviour
             return;
         }
 
-        GUI.DrawTexture(new Rect(0.0f, 0.0f, Screen.width, Screen.height), groundCheckTexture);
+        GUI.DrawTexture(new Rect(0.0f, 0.0f, textureWidth, textureHeight), groundCheckTexture);
     }
 
     private RectInt GetExtendedDimensions(RectInt rect)
     {
-        var x = Mathf.Max(rect.x - extrudeSize, 0);
-        var y = Mathf.Max(rect.y - extrudeSize, 0);
-        var xMax = Mathf.Min(rect.xMax + extrudeSize, textureWidth - 1);
-        var yMax = Mathf.Min(rect.yMax + extrudeSize, textureHeight - 1);
+        var x = Mathf.Max(rect.x - extrudeWidth.x, 0);
+        var y = Mathf.Max(rect.y - extrudeHeight.x, 0);
+        var xMax = Mathf.Min(rect.xMax + extrudeWidth.y, textureWidth - 1);
+        var yMax = Mathf.Min(rect.yMax + extrudeHeight.y, textureHeight - 1);
 
         return new RectInt(x, y, xMax - x, yMax - y);
     }
@@ -114,6 +103,25 @@ public class GroundCheckModel : MonoBehaviour
 
         groundCheckTexture.SetPixels32(rect.x, rect.y, rect.width, rect.height, colors);
 
+        groundCheckTexture.Apply();
+    }
+
+    private void CreateAndClearTexture()
+    {
+        textureWidth = gridWidth * textureGranularity;
+        textureHeight = gridHeight * textureGranularity;
+
+        groundCheckTexture = new Texture2D(textureWidth, textureHeight);
+
+        cameraMin = mainCamera.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, mainCamera.nearClipPlane));
+        cameraMax = mainCamera.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, mainCamera.nearClipPlane));
+
+        var colors = new Color32[textureWidth * textureHeight];
+        for (var i = 0; i < colors.Length; i++) {
+            colors[i] = Color.black;
+        }
+
+        groundCheckTexture.SetPixels32(colors);
         groundCheckTexture.Apply();
     }
 
