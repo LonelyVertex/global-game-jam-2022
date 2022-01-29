@@ -80,7 +80,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Pixelate_8f4b8ab6d12248fc96dd281f6b24b83a: 256
     - Vector1_0ca2af325eb44e81ba7541e3dcf7dca5: 0.13
+    - Vector1_24cd30c9640e467f938a6e6879aa34aa: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
