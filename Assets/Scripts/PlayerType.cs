@@ -2,8 +2,8 @@ using UnityEngine;
 
 public enum PlayerType
 {
-    Black = 0,
-    White = 1
+    Dark = 0,
+    Light = 1
 }
 
 public static class PlayerTypeExtensions
@@ -12,8 +12,8 @@ public static class PlayerTypeExtensions
     {
         return playerType switch
         {
-            PlayerType.Black => Color.red,
-            PlayerType.White => Color.green,
+            PlayerType.Dark => Color.red,
+            PlayerType.Light => Color.green,
             _ => Color.black,
         };
     }
@@ -22,8 +22,8 @@ public static class PlayerTypeExtensions
     {
         return playerType switch
         {
-            PlayerType.Black => Color.red,
-            PlayerType.White => Color.green,
+            PlayerType.Dark => Color.red,
+            PlayerType.Light => Color.green,
             _ => Color.black,
         };
     }
@@ -32,8 +32,8 @@ public static class PlayerTypeExtensions
     {
         return playerType switch
         {
-            PlayerType.Black => color.r >= 1.0f,
-            PlayerType.White => color.g >= 1.0f,
+            PlayerType.Dark => color.r >= 1.0f,
+            PlayerType.Light => color.g >= 1.0f,
             _ => false,
         };
     }
