@@ -1732,7 +1732,7 @@ MonoBehaviour:
   gridHeight: 18
   textureGranularity: 16
   extrudeWidth: {x: 1, y: 1}
-  extrudeHeight: {x: 2, y: 8}
+  extrudeHeight: {x: 8, y: 2}
   drawTextureGUI: 0
 --- !u!4 &1050488601
 Transform:

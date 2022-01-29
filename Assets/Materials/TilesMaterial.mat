@@ -80,6 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_0ca2af325eb44e81ba7541e3dcf7dca5: 0.13
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -98,6 +99,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - Color_3141e2a86c804072b19f8841018dedf0: {r: 1, g: 1, b: 1, a: 1}
+    - Color_422009280b604f5cba54b7dfb068f454: {r: 0, g: 0, b: 0, a: 1}
+    - Color_cdf59220ccda4c08a5668dc1ffb93eb4: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0}
+    - _BlurTexture: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

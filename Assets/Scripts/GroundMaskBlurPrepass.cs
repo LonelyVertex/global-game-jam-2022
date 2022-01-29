@@ -11,6 +11,7 @@ public class GroundMaskBlurPrepass : MonoBehaviour
     [Space]
     [SerializeField] int downsample;
 
+    int maskTextureId = Shader.PropertyToID("_MaskTexture");
     int blurTextureId = Shader.PropertyToID("_BlurTexture");
 
     private RenderTexture frameTexture;
@@ -36,6 +37,7 @@ public class GroundMaskBlurPrepass : MonoBehaviour
         Blur(texture, frameTexture);
 
         Shader.SetGlobalTexture(blurTextureId, frameTexture);
+        Shader.SetGlobalTexture(maskTextureId, texture);
     }
 
     private void HandleRenderPipelineManagerEndFrameRendering(ScriptableRenderContext ctx, Camera[] cameras)
