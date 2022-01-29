@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundDrawer))]
@@ -21,13 +22,24 @@ public class PlayerController : MonoBehaviour
 
     bool IsGone { get; set; }
 
+    public event Action onSwapEvent;
+    public event Action onPortalEnter;
+    public event Action onDied;
+
     public void OnPortalEnter()
     {
         IsGone = true;
-        gameObject.SetActive(false);
         Swap();
+        onPortalEnter?.Invoke();
 
         LevelManager.Instance.PlayerEnteredPortal(groundDrawer.PlayerType);
+
+        Invoke(nameof(Deactivate), 1f);
+    }
+
+    void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 
     void Start()
@@ -54,7 +66,13 @@ public class PlayerController : MonoBehaviour
         jump = false;
 
         movementController.onLandEvent += () => groundDrawer.ResetContinuous();
-        movementController.onJumpEvent += () => groundDrawer.DrawColorUnder();
+        movementController.onJumpEvent += () =>
+        {
+            if (movementController.IsGrounded())
+            {
+                groundDrawer.DrawColorUnder();
+            }
+        };
     }
 
     void Update()
@@ -105,10 +123,12 @@ public class PlayerController : MonoBehaviour
         SetActive(false);
         other.SetActive(true);
         swap = false;
+        onSwapEvent?.Invoke();
     }
 
     void Die()
     {
+        onDied?.Invoke();
         SetActive(false);
         LevelManager.Instance.PlayerDied(groundDrawer.PlayerType);
     }
