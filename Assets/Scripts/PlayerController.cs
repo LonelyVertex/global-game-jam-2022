@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!active) return;
 
-        if (Mathf.Approximately(rigidbody2D.velocity.y, 0) && groundDrawer.IsOnDeadly)
+        if (movementController.IsGrounded() && groundDrawer.IsOnDeadly)
         {
             Die();
             return;
