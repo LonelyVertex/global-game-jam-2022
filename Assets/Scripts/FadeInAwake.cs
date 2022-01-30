@@ -5,6 +5,8 @@ public class FadeInAwake : MonoBehaviour
     protected void Awake()
     {
         var fadeInController = FindObjectOfType<FadeInOutController>();
-        StartCoroutine(fadeInController.FadeIn());
+        if (fadeInController != null) {
+            StartCoroutine(fadeInController.FadeIn());
+        }
     }
 }
