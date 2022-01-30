@@ -5854,8 +5854,6 @@ MonoBehaviour:
   _sleepyParticles: {fileID: 7561329448738886125}
   diedParticles: {fileID: 1248359025953962261}
   disableOnDeathObjects:
-  - {fileID: 1863049595147426596}
-  - {fileID: 1943023000090267663}
   - {fileID: 6539995230144105441}
   activeGameObjects:
   - {fileID: 2594599869833077087}
@@ -10872,11 +10870,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}
---- !u!1 &1943023000090267663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9095883627608631040, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}
-  m_PrefabInstance: {fileID: 7263198888250324751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4803059216306936406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2768574680880655705, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}
@@ -10924,11 +10917,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}
---- !u!1 &1863049595147426596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9095883627608631040, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}
-  m_PrefabInstance: {fileID: 7485528264746073124}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4722591879627919741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2768574680880655705, guid: 4feb8d53a8e09ca49b28a96ec50ff181, type: 3}

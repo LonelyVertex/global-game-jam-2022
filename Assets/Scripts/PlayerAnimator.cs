@@ -116,6 +116,8 @@ public class PlayerAnimator : MonoBehaviour
 
     private void EnableEmission(float velocity)
     {
+        if (!playerController.active) return;
+
         if (velocity < 0.0f) {
             _leftParticles.Stop();
             _rightParticles.Play();
