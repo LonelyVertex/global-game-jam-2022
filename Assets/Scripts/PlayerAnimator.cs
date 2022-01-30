@@ -23,6 +23,13 @@ public class PlayerAnimator : MonoBehaviour
     [Header("Particles")]
     [SerializeField] ParticleSystem _leftParticles;
     [SerializeField] ParticleSystem _rightParticles;
+    [SerializeField] ParticleSystem _sleepyParticles;
+
+    [Header("Active")]
+    [SerializeField] GameObject[] activeGameObjects;
+
+    [Header("Inactive")]
+    [SerializeField] GameObject[] inactiveGameObjects;
 
     public void SetVelocity(float velocity)
     {
@@ -48,6 +55,8 @@ public class PlayerAnimator : MonoBehaviour
 
         animator.ResetTrigger("Land");
         animator.ResetTrigger("Jump");
+
+        SetSleepy();
     }
 
     protected void OnDestroy()
@@ -59,7 +68,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void HandlePlayerControllerSwapped()
     {
-        
+        SetSleepy();
     }
 
     private void HandleMovementControllerJumped()
@@ -91,6 +100,17 @@ public class PlayerAnimator : MonoBehaviour
         } else {
             _leftParticles.Stop();
             _rightParticles.Stop();
+        }
+    }
+
+    private void SetSleepy()
+    {
+        foreach (var activeGo in activeGameObjects) {
+            activeGo.SetActive(playerController.active);
+        }
+
+        foreach (var inactiveGo in inactiveGameObjects) {
+            inactiveGo.SetActive(!playerController.active);
         }
     }
 }

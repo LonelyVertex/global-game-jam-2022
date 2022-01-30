@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     bool jump = false;
     bool swap = false;
 
-    bool active;
+    public bool active;
 
     float lastX;
 
@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
                 groundDrawer.DrawColorUnder();
             }
         };
+
+        onSwapEvent?.Invoke();
     }
 
     void Update()
@@ -126,7 +128,6 @@ public class PlayerController : MonoBehaviour
         SetActive(false);
         other.SetActive(true);
         swap = false;
-        onSwapEvent?.Invoke();
     }
 
     void Die()

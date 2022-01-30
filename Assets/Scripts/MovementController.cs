@@ -77,7 +77,6 @@ public class MovementController : MonoBehaviour
 
         if (grounded && !wasGrounded)
         {
-            Debug.Log("Landed Invoke");
             onLandEvent?.Invoke();
         }
     }
@@ -98,7 +97,6 @@ public class MovementController : MonoBehaviour
             grounded = false;
             rigidbody2D.velocity = new Vector3(rigidbody2D.velocity.x, 0);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-            Debug.Log("Jump Invoke");
             onJumpEvent?.Invoke();
         }
     }
