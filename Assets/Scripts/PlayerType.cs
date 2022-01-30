@@ -8,6 +8,16 @@ public enum PlayerType
 
 public static class PlayerTypeExtensions
 {
+    public static Color ToVisulaColor(this PlayerType playerType)
+    {
+        return playerType switch
+        {
+            PlayerType.Dark => Color.black,
+            PlayerType.Light => Color.white,
+            _ => Color.black,
+        };
+    }
+
     public static Color32 ToColor32(this PlayerType playerType)
     {
         return playerType switch

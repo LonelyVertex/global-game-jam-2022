@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         Swap();
         onPortalEnter?.Invoke();
 
-        LevelManager.Instance.PlayerEnteredPortal(groundDrawer.PlayerType);
+        LevelManager.Instance.PlayerEnteredPortal(groundDrawer.PlayerType, transform.position);
 
         Invoke(nameof(Deactivate), 1f);
     }
@@ -133,6 +133,6 @@ public class PlayerController : MonoBehaviour
     {
         onDied?.Invoke();
         SetActive(false);
-        LevelManager.Instance.PlayerDied(groundDrawer.PlayerType);
+        LevelManager.Instance.PlayerDied(groundDrawer.PlayerType, transform.position);
     }
 }

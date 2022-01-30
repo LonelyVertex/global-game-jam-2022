@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,38 +28,58 @@ public class LevelManager : MonoBehaviour
 
     string CurrentSceneName => SceneManager.GetActiveScene().name;
 
+    FadeInOutController fadeInOutController;
+
     void Awake()
     {
         if (!Instance)
         {
             Instance = this;
         }
+
+        fadeInOutController = FindObjectOfType<FadeInOutController>();
     }
 
-    public void PlayerEnteredPortal(PlayerType playerType)
+    public void PlayerEnteredPortal(PlayerType playerType, Vector2 position)
     {
         completePortals++;
 
         if (completePortals == 2)
         {
-            // TODO: Victory animation and sound
-            Invoke(nameof(LoadNextLevel), 1f);
+            StartCoroutine(LoadNextLevel(playerType, position));
         }
     }
 
-    public void PlayerDied(PlayerType playerType)
+    public void PlayerDied(PlayerType playerType, Vector2 position)
     {
-        // TODO: Failed animation and sound
-        Invoke(nameof(RestartLevel), 1f);
+        StartCoroutine(RestartLevel(playerType, position));
     }
 
-    void LoadNextLevel()
+    IEnumerator LoadNextLevel(PlayerType playerType, Vector2 position)
     {
+        // TODO: Victory animation and sound
+
+        if (fadeInOutController != null) {
+            yield return StartCoroutine(fadeInOutController.FadeOut(playerType, position));
+        } else {
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        
+
         SceneManager.LoadScene(levels.GetNextSceneName(CurrentSceneName));
     }
 
-    void RestartLevel()
+    IEnumerator RestartLevel(PlayerType playerType, Vector2 position)
     {
+        // TODO: Failed animation and sound
+
+        if (fadeInOutController != null) {
+            yield return StartCoroutine(fadeInOutController.FadeOut(playerType, position));
+        } else {
+            yield return new WaitForSeconds(1.0f);
+        }
+
         SceneManager.LoadScene(CurrentSceneName);
     }
 
@@ -68,7 +89,7 @@ public class LevelManager : MonoBehaviour
         {
             if (++sequenceIndex == sequence.Length)
             {
-                LoadNextLevel();
+                StartCoroutine(LoadNextLevel(PlayerType.Dark, Vector2.zero));
             }
         }
         else if (Input.anyKeyDown)
