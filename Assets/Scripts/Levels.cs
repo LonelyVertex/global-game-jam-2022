@@ -6,14 +6,8 @@ using Utilities;
 [CreateAssetMenu]
 public class Levels : ScriptableObject
 {
-    public SceneField startScene;
     public SceneField finalScene;
     public List<SceneField> levels;
-
-    public string GetStartSceneName()
-    {
-        return startScene.SceneName;
-    }
 
     public string GetFirstLevelSceneName()
     {
@@ -22,13 +16,14 @@ public class Levels : ScriptableObject
 
     public string GetNextSceneName(string currentSceneName)
     {
-        Debug.Log("looking for next level for " + currentSceneName);
+        if (finalScene.SceneName.EndsWith(currentSceneName))
+        {
+            return GetFirstLevelSceneName();
+        }
 
         var match = false;
         foreach (var level in levels)
         {
-            Debug.Log("level: " + level.SceneName + ", match: " + (level.SceneName == currentSceneName));
-
             if (match)
             {
                 return level.SceneName;

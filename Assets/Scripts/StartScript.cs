@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class StartScript : MonoBehaviour
 {
     [SerializeField] Levels levels;
 
-    public void Play()
+    void Start()
     {
         SceneManager.LoadScene(levels.GetFirstLevelSceneName());
     }
