@@ -132,8 +132,8 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        onDied?.Invoke();
         SetActive(false);
+        onDied?.Invoke();
         LevelManager.Instance.PlayerDied(groundDrawer.PlayerType, transform.position);
     }
 }

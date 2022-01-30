@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -24,6 +21,10 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] ParticleSystem _leftParticles;
     [SerializeField] ParticleSystem _rightParticles;
     [SerializeField] ParticleSystem _sleepyParticles;
+    [SerializeField] ParticleSystem diedParticles;
+
+    [Header("Disable on death")]
+    [SerializeField] GameObject[] disableOnDeathObjects;
 
     [Header("Active")]
     [SerializeField] GameObject[] activeGameObjects;
@@ -50,11 +51,13 @@ public class PlayerAnimator : MonoBehaviour
     protected void Start()
     {
         playerController.onSwapEvent += HandlePlayerControllerSwapped;
+        playerController.onDied += HandlePlayerControllerDied;
         movementController.onJumpEvent += HandleMovementControllerJumped;
         movementController.onLandEvent += HandleMovementControllerLanded;
 
         animator.ResetTrigger("Land");
         animator.ResetTrigger("Jump");
+        animator.ResetTrigger("Death");
 
         SetSleepy();
     }
@@ -62,6 +65,7 @@ public class PlayerAnimator : MonoBehaviour
     protected void OnDestroy()
     {
         playerController.onSwapEvent -= HandlePlayerControllerSwapped;
+        playerController.onDied -= HandlePlayerControllerDied;
         movementController.onJumpEvent -= HandleMovementControllerJumped;
         movementController.onLandEvent -= HandleMovementControllerLanded;
     }
@@ -82,6 +86,15 @@ public class PlayerAnimator : MonoBehaviour
         animator.ResetTrigger("Jump");
         animator.SetTrigger("Land");
     }
+    private void HandlePlayerControllerDied()
+    {
+        animator.SetTrigger("Death");
+
+        foreach (var o in disableOnDeathObjects) {
+            o.SetActive(false);
+        }
+    }
+
     private void SetEyePos(Transform eyeTransform, float xPos)
     {
         var pos = eyeTransform.localPosition;

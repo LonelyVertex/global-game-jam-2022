@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator RestartLevel(PlayerType playerType, Vector2 position)
     {
-        // TODO: Failed animation and sound
+        yield return new WaitForSeconds(0.3f);
 
         if (fadeInOutController != null) {
             yield return StartCoroutine(fadeInOutController.FadeOut(playerType, position));
