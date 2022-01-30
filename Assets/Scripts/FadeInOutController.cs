@@ -12,6 +12,8 @@ public class FadeInOutController : MonoBehaviour
     [Space]
     [SerializeField] PlayerType playerType = PlayerType.Light;
 
+    bool firstFade = true;
+
     public IEnumerator FadeOut(PlayerType playerType, Vector2 position)
     {
         this.playerType = playerType;
@@ -34,6 +36,12 @@ public class FadeInOutController : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
+        if (firstFade) {
+            fadeGo.SetActive(false);
+            firstFade = false;
+            yield break;
+        }
+
         fadeGo.SetActive(true);
 
         fadeMaterial.SetFloat("_MaxRadius", CalculateMaxRadius(Vector2.zero));

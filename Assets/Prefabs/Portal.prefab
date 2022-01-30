@@ -127,6 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef248b046996413597bb1c3818ca079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portalParticles: {fileID: 459428086408611654}
+  spriteRenderer: {fileID: 1250774636}
+  activeColor: {r: 0.9960785, g: 0.909804, b: 0, a: 1}
+  disabledColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+  portalCollider: {fileID: 1435918663735364605}
 --- !u!61 &1435918663735364605
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -165,7 +170,7 @@ GameObject:
   - component: {fileID: 459428086408611654}
   - component: {fileID: 7474430103578674925}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: PortalParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

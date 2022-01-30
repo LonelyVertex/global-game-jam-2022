@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public event Action onSwapEvent;
     public event Action onPortalEnter;
     public event Action onDied;
+    public event Action onActiveChanged;
 
     public void OnPortalEnter()
     {
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
             }
         };
 
-        onSwapEvent?.Invoke();
+        onActiveChanged?.Invoke();
     }
 
     void Update()
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
         SetActive(false);
         other.SetActive(true);
         swap = false;
+        onSwapEvent?.Invoke();
     }
 
     void Die()

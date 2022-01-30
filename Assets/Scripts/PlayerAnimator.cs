@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -50,8 +51,9 @@ public class PlayerAnimator : MonoBehaviour
 
     protected void Start()
     {
-        playerController.onSwapEvent += HandlePlayerControllerSwapped;
+        playerController.onActiveChanged += HandlePlayerControllerActiveChanged;
         playerController.onDied += HandlePlayerControllerDied;
+        playerController.onPortalEnter += HandlePlayerControllerPortalEnter;
         movementController.onJumpEvent += HandleMovementControllerJumped;
         movementController.onLandEvent += HandleMovementControllerLanded;
 
@@ -64,13 +66,14 @@ public class PlayerAnimator : MonoBehaviour
 
     protected void OnDestroy()
     {
-        playerController.onSwapEvent -= HandlePlayerControllerSwapped;
+        playerController.onActiveChanged -= HandlePlayerControllerActiveChanged;
         playerController.onDied -= HandlePlayerControllerDied;
+        playerController.onPortalEnter -= HandlePlayerControllerPortalEnter;
         movementController.onJumpEvent -= HandleMovementControllerJumped;
         movementController.onLandEvent -= HandleMovementControllerLanded;
     }
 
-    private void HandlePlayerControllerSwapped()
+    private void HandlePlayerControllerActiveChanged()
     {
         SetSleepy();
     }
@@ -89,6 +92,15 @@ public class PlayerAnimator : MonoBehaviour
     private void HandlePlayerControllerDied()
     {
         animator.SetTrigger("Death");
+
+        foreach (var o in disableOnDeathObjects) {
+            o.SetActive(false);
+        }
+    }
+
+    private void HandlePlayerControllerPortalEnter()
+    {
+        animator.SetTrigger("End");
 
         foreach (var o in disableOnDeathObjects) {
             o.SetActive(false);

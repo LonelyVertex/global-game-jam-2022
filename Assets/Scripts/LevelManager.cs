@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadNextLevel(PlayerType playerType, Vector2 position)
     {
-        // TODO: Victory animation and sound
+        yield return new WaitForSeconds(0.5f);
 
         if (fadeInOutController != null) {
             yield return StartCoroutine(fadeInOutController.FadeOut(playerType, position));
@@ -65,14 +65,12 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
 
-        
-
         SceneManager.LoadScene(levels.GetNextSceneName(CurrentSceneName));
     }
 
     IEnumerator RestartLevel(PlayerType playerType, Vector2 position)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         if (fadeInOutController != null) {
             yield return StartCoroutine(fadeInOutController.FadeOut(playerType, position));

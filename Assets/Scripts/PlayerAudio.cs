@@ -28,7 +28,6 @@ public class PlayerAudio : MonoBehaviour
         playerController.onDied += () => PlaySound(dieSound, .1f);
     }
 
-
     void PlaySound(AudioClip audioClip, float delay = 0f)
     {
         audioSource.clip = audioClip;

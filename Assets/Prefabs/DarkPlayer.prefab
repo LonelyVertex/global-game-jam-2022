@@ -52,6 +52,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2084588575227047988, guid: cbf0b54a4b0a14d6d9c2c2d121da3409, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084588575227047988, guid: cbf0b54a4b0a14d6d9c2c2d121da3409, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -62,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 2084588575227047988, guid: cbf0b54a4b0a14d6d9c2c2d121da3409, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287849365635021599, guid: cbf0b54a4b0a14d6d9c2c2d121da3409, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 2287849365635021599, guid: cbf0b54a4b0a14d6d9c2c2d121da3409, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
