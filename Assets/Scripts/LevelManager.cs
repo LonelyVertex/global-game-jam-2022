@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(sequence[sequenceIndex]))
+        if (sequenceIndex < sequence.Length && Input.GetKeyDown(sequence[sequenceIndex]))
         {
             if (++sequenceIndex == sequence.Length)
             {
