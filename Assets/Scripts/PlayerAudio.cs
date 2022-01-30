@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -21,11 +22,45 @@ public class PlayerAudio : MonoBehaviour
         movementController = GetComponent<MovementController>();
         playerController = GetComponent<PlayerController>();
 
-        movementController.onJumpEvent += () => PlaySound(jumpSound);
-        movementController.onLandEvent += () => PlaySound(landSound, .1f);
-        playerController.onSwapEvent += () => PlaySound(swapSound);
-        playerController.onPortalEnter += () => PlaySound(portalSound);
-        playerController.onDied += () => PlaySound(dieSound, .1f);
+        movementController.onJumpEvent += PlayJump;
+        movementController.onLandEvent += PlayLand;
+        playerController.onSwapEvent += PlaySwap;
+        playerController.onPortalEnter += PlayPortal;
+        playerController.onDied += PlayDied;
+    }
+
+    void OnDestroy()
+    {
+        movementController.onJumpEvent -= PlayJump;
+        movementController.onLandEvent -= PlayLand;
+        playerController.onSwapEvent -= PlaySwap;
+        playerController.onPortalEnter -= PlayPortal;
+        playerController.onDied -= PlayDied;
+    }
+
+    void PlayJump()
+    {
+        PlaySound(jumpSound);
+    }
+
+    void PlayLand()
+    {
+        PlaySound(landSound, .1f);
+    }
+
+    void PlaySwap()
+    {
+        PlaySound(swapSound);
+    }
+
+    void PlayPortal()
+    {
+        PlaySound(portalSound);
+    }
+
+    void PlayDied()
+    {
+        PlaySound(dieSound, .1f);
     }
 
     void PlaySound(AudioClip audioClip, float delay = 0f)

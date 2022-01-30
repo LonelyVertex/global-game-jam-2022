@@ -15,8 +15,9 @@ public class MovementController : MonoBehaviour
     [SerializeField] float runSpeed = 30f;
 
     const float groundedRadius = .2f;
-    bool grounded;
+    bool grounded = true;
     bool groundedOnTheGround;
+    bool justJumped = false;
     Rigidbody2D rigidbody2D;
     Vector3 velocity = Vector3.zero;
 
@@ -72,13 +73,15 @@ public class MovementController : MonoBehaviour
         var collidersRight = Physics2D.OverlapCircleAll(groundCheckRight.position, groundedRadius, whatIsGround);
         var allColliders = collidersLeft.Union(collidersRight).ToList();
         
-        groundedOnTheGround = allColliders.Any(col => col.gameObject.layer == LayerMask.NameToLayer("Ground"));
-        grounded = groundedOnTheGround || allColliders.Any(col => col.gameObject != gameObject);
+        groundedOnTheGround = !justJumped && allColliders.Any(col => col.gameObject.layer == LayerMask.NameToLayer("Ground"));
+        grounded = !justJumped && (groundedOnTheGround || allColliders.Any(col => col.gameObject != gameObject));
 
         if (grounded && !wasGrounded)
         {
             onLandEvent?.Invoke();
         }
+
+        justJumped = false;
     }
 
     public void Move(float move, bool jump)
@@ -95,6 +98,7 @@ public class MovementController : MonoBehaviour
         if (grounded && jump)
         {
             grounded = false;
+            justJumped = true;
             rigidbody2D.velocity = new Vector3(rigidbody2D.velocity.x, 0);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
             onJumpEvent?.Invoke();
